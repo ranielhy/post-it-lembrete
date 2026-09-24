@@ -1,0 +1,47 @@
+:root { font-family: Inter, ui-rounded, system-ui, sans-serif; color: #27241f; }
+* { box-sizing: border-box; }
+button { font: inherit; }
+body { margin: 0; }
+.manager { min-height: 100vh; padding: 38px 46px 24px; background: #f6f1e8; }
+.hero { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .16em; color: #8f6a24; }
+h1 { margin: 6px 0 5px; font-size: 36px; letter-spacing: -.04em; }
+.hero p, .empty p { margin: 0; color: #716b62; }
+.primary { border: 0; border-radius: 12px; padding: 13px 18px; cursor: pointer; background: #27241f; color: white; font-weight: 750; box-shadow: 0 5px 15px #27241f2b; }
+.primary:hover { transform: translateY(-1px); }
+.color-picker { display: flex; align-items: center; gap: 9px; margin: 34px 0; padding: 14px 18px; border: 1px solid #ded6c9; border-radius: 14px; background: #fffaf2; }
+.color-picker span { margin-right: 8px; font-size: 14px; font-weight: 650; }
+.swatch, .mini-colors button { width: 25px; height: 25px; border: 2px solid transparent; border-radius: 50%; cursor: pointer; }
+.swatch.selected { outline: 2px solid #322e28; outline-offset: 2px; }
+[data-color=yellow] { background: #ffe77a; } [data-color=pink] { background: #ffb7d5; }
+[data-color=blue] { background: #9edcff; } [data-color=green] { background: #b8efa4; }
+[data-color=purple] { background: #d8b8ff; } [data-color=orange] { background: #ffc487; }
+.list-heading { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 1px solid #ddd4c5; }
+.list-heading h2 { margin: 0 0 13px; font-size: 19px; }
+#count { color: #837b70; font-size: 13px; }
+.notes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 18px; padding: 22px 0; }
+.card { min-height: 150px; padding: 18px; border: 0; border-radius: 4px 4px 16px 4px; cursor: pointer; text-align: left; color: #38342e; box-shadow: 0 8px 18px #66552b20; transition: transform .15s; white-space: pre-wrap; overflow: hidden; }
+.card:hover { transform: translateY(-3px) rotate(-.5deg); }
+.card small { display: block; margin-top: 18px; opacity: .55; }
+.yellow { background: #ffe77a; } .pink { background: #ffb7d5; } .blue { background: #9edcff; }
+.green { background: #b8efa4; } .purple { background: #d8b8ff; } .orange { background: #ffc487; }
+.empty { padding: 55px 20px; text-align: center; }
+.empty-note { width: 64px; height: 64px; margin: auto; padding-top: 17px; background: #ffe77a; box-shadow: 5px 6px 0 #e4c752; font-size: 24px; }
+.empty h3 { margin-bottom: 8px; }
+.manager > footer { position: fixed; bottom: 0; left: 0; right: 0; padding: 10px 46px; background: #eee7da; color: #777066; font-size: 12px; }
+.manager > footer button { float: right; border: 0; background: none; cursor: pointer; color: #7b342d; }
+.note-window { height: 100vh; overflow: hidden; background: transparent; }
+.paper { display: flex; flex-direction: column; height: 100vh; border-radius: 3px 3px 14px 3px; overflow: hidden; }
+.note-bar { display: flex; align-items: center; justify-content: space-between; height: 38px; padding: 0 8px 0 14px; -webkit-app-region: drag; }
+.drag-handle { opacity: .35; font-size: 19px; }
+.note-actions { display: flex; -webkit-app-region: no-drag; }
+.note-actions button { width: 30px; height: 30px; border: 0; border-radius: 50%; background: transparent; cursor: pointer; font-size: 17px; filter: grayscale(1); opacity: .45; }
+.note-actions button:hover { background: #00000012; opacity: .9; }
+#pin.active { filter: none; opacity: 1; transform: rotate(-18deg); }
+#text { flex: 1; width: 100%; padding: 10px 20px; resize: none; border: 0; outline: 0; background: transparent; color: #332f28; font: 500 19px/1.45 ui-rounded, system-ui, sans-serif; }
+#text::placeholder { color: #5d574966; }
+.note-footer { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px 13px; }
+.mini-colors { display: flex; gap: 4px; }
+.mini-colors button { width: 17px; height: 17px; border: 1px solid #0002; }
+.delete { border: 0; background: transparent; cursor: pointer; opacity: .45; font-size: 11px; }
+.delete:hover { opacity: .9; color: #8e2924; }

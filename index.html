@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Post-it Lembrete</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="manager">
+  <header class="hero">
+    <div>
+      <span class="eyebrow">SEUS LEMBRETES</span>
+      <h1>Post-it Lembrete</h1>
+      <p>Ideias e tarefas sempre à vista na sua área de trabalho.</p>
+    </div>
+    <button id="new-note" class="primary">＋ Novo post-it</button>
+  </header>
+
+  <section class="color-picker" aria-label="Escolha uma cor">
+    <span>Cor do próximo:</span>
+    <button class="swatch selected" data-color="yellow" title="Amarelo"></button>
+    <button class="swatch" data-color="pink" title="Rosa"></button>
+    <button class="swatch" data-color="blue" title="Azul"></button>
+    <button class="swatch" data-color="green" title="Verde"></button>
+    <button class="swatch" data-color="purple" title="Roxo"></button>
+    <button class="swatch" data-color="orange" title="Laranja"></button>
+  </section>
+
+  <main>
+    <div class="list-heading">
+      <h2>Post-its ativos</h2>
+      <span id="count"></span>
+    </div>
+    <div id="empty" class="empty">
+      <div class="empty-note">✦</div>
+      <h3>Nenhum lembrete ainda</h3>
+      <p>Crie seu primeiro post-it e escreva algo importante.</p>
+    </div>
+    <div id="notes" class="notes-grid"></div>
+  </main>
+
+  <footer>Os post-its são salvos automaticamente no computador. <button id="quit">Encerrar aplicativo</button></footer>
+  <script src="renderer.js"></script>
+</body>
+</html>

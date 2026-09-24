@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lembrete</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="note-window">
+  <div id="paper" class="paper yellow">
+    <header class="note-bar">
+      <span class="drag-handle" title="Arraste para mover">⠿</span>
+      <div class="note-actions">
+        <button id="pin" title="Sempre no topo">●</button>
+        <button id="close" title="Fechar esta janela">×</button>
+      </div>
+    </header>
+    <textarea id="text" maxlength="3000" autofocus placeholder="Escreva seu lembrete..."></textarea>
+    <footer class="note-footer">
+      <div class="mini-colors">
+        <button data-color="yellow"></button><button data-color="pink"></button>
+        <button data-color="blue"></button><button data-color="green"></button>
+        <button data-color="purple"></button><button data-color="orange"></button>
+      </div>
+      <button id="delete" class="delete" title="Excluir post-it">Excluir</button>
+    </footer>
+  </div>
+  <script src="note.js"></script>
+</body>
+</html>

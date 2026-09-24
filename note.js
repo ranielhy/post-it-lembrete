@@ -1,0 +1,46 @@
+const id = new URLSearchParams(location.search).get('id');
+const paper = document.querySelector('#paper');
+const text = document.querySelector('#text');
+const pin = document.querySelector('#pin');
+let note;
+let saveTimer;
+
+function setColor(color) {
+  paper.className = `paper ${color}`;
+}
+
+function showPinState(isPinned) {
+  pin.classList.toggle('active', isPinned);
+  pin.title = isPinned ? 'Na frente — clique para deixar na área de trabalho' : 'Na área de trabalho — clique para fixar na frente';
+}
+
+window.postIt.get(id).then((loaded) => {
+  if (!loaded) return window.postIt.closeNote();
+  note = loaded;
+  text.value = note.text;
+  setColor(note.color);
+  showPinState(note.alwaysOnTop);
+});
+
+text.addEventListener('input', () => {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => window.postIt.update(id, { text: text.value }), 250);
+});
+
+document.querySelectorAll('.mini-colors button').forEach((button) => {
+  button.addEventListener('click', () => {
+    setColor(button.dataset.color);
+    window.postIt.update(id, { color: button.dataset.color });
+  });
+});
+
+pin.addEventListener('click', () => {
+  note.alwaysOnTop = !note.alwaysOnTop;
+  showPinState(note.alwaysOnTop);
+  window.postIt.update(id, { alwaysOnTop: note.alwaysOnTop });
+});
+
+document.querySelector('#close').addEventListener('click', () => window.postIt.closeNote());
+document.querySelector('#delete').addEventListener('click', () => {
+  if (confirm('Excluir este post-it?')) window.postIt.remove(id);
+});

@@ -1,0 +1,42 @@
+{
+  "name": "post-it-lembrete",
+  "version": "1.1.0",
+  "description": "Post-its coloridos e persistentes para a área de trabalho Linux",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "dist": "electron-builder --linux AppImage deb"
+  },
+  "devDependencies": {
+    "electron": "^38.2.1",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.postitlembrete.app",
+    "productName": "Post-it Lembrete",
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "note.html",
+      "styles.css",
+      "renderer.js",
+      "note.js"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility",
+      "syncDesktopName": true
+    }
+  },
+  "author": {
+    "name": "Rany",
+    "email": "postitlembrete@localhost"
+  },
+  "homepage": "https://example.invalid/post-it-lembrete",
+  "desktopName": "post-it-lembrete"
+}
