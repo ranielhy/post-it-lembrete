@@ -2,6 +2,8 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const fs = require('node:fs');
 const path = require('node:path');
 
+const appIcon = path.join(__dirname, 'img', 'iconPostIt.png');
+
 let managerWindow;
 const noteWindows = new Map();
 let notes = [];
@@ -40,6 +42,7 @@ function createManager() {
     minWidth: 620,
     minHeight: 480,
     title: 'Post-it Lembrete',
+    icon: appIcon,
     backgroundColor: '#f6f1e8',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -57,7 +60,6 @@ function createNoteWindow(note) {
     return;
   }
 
-  const desktopMode = note.alwaysOnTop === false;
   const win = new BrowserWindow({
     x: note.x,
     y: note.y,
@@ -66,9 +68,9 @@ function createNoteWindow(note) {
     minWidth: 220,
     minHeight: 180,
     frame: false,
-    type: desktopMode ? 'desktop' : 'normal',
-    alwaysOnTop: !desktopMode,
-    skipTaskbar: desktopMode,
+    icon: appIcon,
+    alwaysOnTop: note.alwaysOnTop !== false,
+    skipTaskbar: note.alwaysOnTop === false,
     backgroundColor: colors[note.color] || colors.yellow,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -140,15 +142,12 @@ ipcMain.handle('notes:update', (_event, id, changes) => {
     if (Object.hasOwn(changes, key)) note[key] = changes[key];
   }
   const win = noteWindows.get(id);
-  const changesLayer = Object.hasOwn(changes, 'alwaysOnTop');
+  if (Object.hasOwn(changes, 'alwaysOnTop') && win) {
+    win.setAlwaysOnTop(Boolean(changes.alwaysOnTop));
+    win.setSkipTaskbar(!changes.alwaysOnTop);
+  }
   if (Object.hasOwn(changes, 'color')) win?.setBackgroundColor(colors[note.color] || colors.yellow);
   saveNotes();
-  if (changesLayer && win && !win.isDestroyed()) {
-    Object.assign(note, win.getBounds());
-    noteWindows.delete(id);
-    win.destroy();
-    setTimeout(() => createNoteWindow(note), 80);
-  }
   return note;
 });
 ipcMain.handle('notes:delete', (_event, id) => {

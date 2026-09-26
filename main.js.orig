@@ -57,7 +57,6 @@ function createNoteWindow(note) {
     return;
   }
 
-  const desktopMode = note.alwaysOnTop === false;
   const win = new BrowserWindow({
     x: note.x,
     y: note.y,
@@ -66,9 +65,8 @@ function createNoteWindow(note) {
     minWidth: 220,
     minHeight: 180,
     frame: false,
-    type: desktopMode ? 'desktop' : 'normal',
-    alwaysOnTop: !desktopMode,
-    skipTaskbar: desktopMode,
+    alwaysOnTop: note.alwaysOnTop !== false,
+    skipTaskbar: note.alwaysOnTop === false,
     backgroundColor: colors[note.color] || colors.yellow,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),

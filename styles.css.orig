@@ -35,9 +35,9 @@ h1 { margin: 6px 0 5px; font-size: 36px; letter-spacing: -.04em; }
 .note-bar { display: flex; align-items: center; justify-content: space-between; height: 38px; padding: 0 8px 0 14px; -webkit-app-region: drag; }
 .drag-handle { opacity: .35; font-size: 19px; }
 .note-actions { display: flex; -webkit-app-region: no-drag; }
-.note-actions button { width: 30px; height: 30px; border: 0; border-radius: 50%; background: transparent; cursor: pointer; font-size: 19px; opacity: .5; }
+.note-actions button { width: 30px; height: 30px; border: 0; border-radius: 50%; background: transparent; cursor: pointer; font-size: 17px; filter: grayscale(1); opacity: .45; }
 .note-actions button:hover { background: #00000012; opacity: .9; }
-#pin.active { color: #9c3f24; opacity: 1; }
+#pin.active { filter: none; opacity: 1; transform: rotate(-18deg); }
 #text { flex: 1; width: 100%; padding: 10px 20px; resize: none; border: 0; outline: 0; background: transparent; color: #332f28; font: 500 19px/1.45 ui-rounded, system-ui, sans-serif; }
 #text::placeholder { color: #5d574966; }
 .note-footer { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px 13px; }

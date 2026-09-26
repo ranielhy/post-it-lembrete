@@ -22,6 +22,9 @@ h1 { margin: 6px 0 5px; font-size: 36px; letter-spacing: -.04em; }
 .notes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 18px; padding: 22px 0; }
 .card { min-height: 150px; padding: 18px; border: 0; border-radius: 4px 4px 16px 4px; cursor: pointer; text-align: left; color: #38342e; box-shadow: 0 8px 18px #66552b20; transition: transform .15s; white-space: pre-wrap; overflow: hidden; }
 .card:hover { transform: translateY(-3px) rotate(-.5deg); }
+.card-content { width: 100%; min-height: 95px; padding: 0; border: 0; background: transparent; cursor: pointer; text-align: left; color: inherit; white-space: pre-wrap; }
+.card-delete { float: right; padding: 4px 7px; border: 0; border-radius: 6px; background: #ffffff55; cursor: pointer; color: #75362f; font-size: 11px; opacity: .65; }
+.card-delete:hover { opacity: 1; background: #fff8; }
 .card small { display: block; margin-top: 18px; opacity: .55; }
 .yellow { background: #ffe77a; } .pink { background: #ffb7d5; } .blue { background: #9edcff; }
 .green { background: #b8efa4; } .purple { background: #d8b8ff; } .orange { background: #ffc487; }

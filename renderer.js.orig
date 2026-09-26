@@ -17,14 +17,7 @@ function render(notes) {
     hint.textContent = 'Clique para abrir';
     content.append(hint);
     content.addEventListener('click', () => window.postIt.open(note.id));
-    const remove = document.createElement('button');
-    remove.className = 'card-delete';
-    remove.textContent = '🗑 Excluir';
-    remove.title = 'Excluir este post-it';
-    remove.addEventListener('click', () => {
-      if (confirm('Excluir este post-it? Esta ação não pode ser desfeita.')) window.postIt.remove(note.id);
-    });
-    card.append(content, remove);
+    card.append(content);
     container.append(card);
   }
 }
