@@ -6,11 +6,12 @@
   "scripts": {
     "start": "electron .",
     "dev": "electron .",
-    "dist": "electron-builder --linux AppImage deb"
+    "dist": "electron-builder --linux AppImage deb",
+    "dist:snap": "electron-builder --linux snap && bash scripts/verify-snap.sh"
   },
   "devDependencies": {
     "electron": "^38.2.1",
-    "electron-builder": "^26.0.12"
+    "electron-builder": "26.0.12"
   },
   "build": {
     "appId": "com.postitlembrete.app",
@@ -31,8 +32,7 @@
         "deb"
       ],
       "icon": "build/icons",
-      "category": "Utility",
-      "syncDesktopName": true
+      "category": "Utility"
     }
   },
   "author": {
