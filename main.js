@@ -92,6 +92,9 @@ function createNoteWindow(note) {
 
   win.on('moved', rememberBounds);
   win.on('resized', rememberBounds);
+  // Capture the final geometry as well, including when the note is closed
+  // immediately after being dragged or resized.
+  win.on('close', rememberBounds);
   win.on('closed', () => noteWindows.delete(note.id));
 }
 
